@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name="profile")
 public class Profile {
 	
-    @jakarta.persistence.Id
+	@jakarta.persistence.Id
     @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
 	private int id;
     

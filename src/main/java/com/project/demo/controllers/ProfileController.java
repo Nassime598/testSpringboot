@@ -46,7 +46,7 @@ public class ProfileController {
     @GetMapping("/profiles/{id}")
     public ResponseEntity<Profile>  fetchProfileById(@PathVariable("id") long id) {
         Profile P = profileservice.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found Profile with id = " + id));
 
             return new ResponseEntity<>(P, HttpStatus.OK);
       }

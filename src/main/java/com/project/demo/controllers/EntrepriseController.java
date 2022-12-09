@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.demo.exception.ResourceNotFoundException;
 import com.project.demo.models.Entreprise;
+import com.project.demo.models.Profile;
 import com.project.demo.services.EntrepriseServices;
 
 @RestController
@@ -34,6 +35,14 @@ public class EntrepriseController {
         return entrepriseService.SaveEntreprise(entreprise);
     }
  
+    @GetMapping("/entreprises/{tvanumero}")
+    public ResponseEntity<Entreprise>  fetchEntrepriseById(@PathVariable("tvanumero") long tvanumero) {
+        Entreprise E = entrepriseService.findById(tvanumero)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found Profile with id = " + tvanumero));
+
+            return new ResponseEntity<>(E, HttpStatus.OK);
+      }
+    
     // Read operation
     @GetMapping("/entreprises")
     public ResponseEntity<List<Entreprise>> fetchEntrepriseList()
